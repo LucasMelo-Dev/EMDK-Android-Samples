@@ -168,11 +168,13 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
 
     @Override
     public void onData(ScanDataCollection scanDataCollection) {
+        deInitScanner();
         if ((scanDataCollection != null) && (scanDataCollection.getResult() == ScannerResults.SUCCESS)) {
             ArrayList <ScanData> scanData = scanDataCollection.getScanData();
             for(ScanData data : scanData) {
                 updateData("<font color='gray'>" + data.getLabelType() + "</font> : " + data.getData());
             }
+            initScanner();
         }
     }
 
